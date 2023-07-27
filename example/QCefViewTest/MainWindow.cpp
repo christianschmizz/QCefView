@@ -72,7 +72,7 @@ MainWindow::createLeftCefView()
   connect(m_pLeftCefViewWidget, &QCefView::loadStart, this, &MainWindow::onLoadStart);
   connect(m_pLeftCefViewWidget, &QCefView::loadEnd, this, &MainWindow::onLoadEnd);
   connect(m_pLeftCefViewWidget, &QCefView::loadError, this, &MainWindow::onLoadError);
-  connect(m_pLeftCefViewWidget, &CefViewWidget::authRequested, this, &MainWindow::onAuthRequested);
+  connect(m_pLeftCefViewWidget, &QCefView::authRequested, this, &MainWindow::onAuthRequested);
 
   m_ui.leftCefViewContainer->layout()->addWidget(m_pLeftCefViewWidget);
 }
