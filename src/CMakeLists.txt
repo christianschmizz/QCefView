@@ -193,7 +193,7 @@ endif() # OS_MACOS
 
 target_compile_definitions(QCefView PRIVATE NOMINMAX)
 
-target_include_directories(QCefView PRIVATE
+target_include_directories(QCefView PUBLIC
   "${CMAKE_CURRENT_SOURCE_DIR}/../include"
   ${CefViewCore_EXPORT_INCLUDE_PATH}
 )
@@ -207,7 +207,7 @@ target_link_libraries(QCefView
   Qt${QT_VERSION_MAJOR}::Gui
   Qt${QT_VERSION_MAJOR}::Core
   Qt${QT_VERSION_MAJOR}::Widgets
-  PRIVATE
+  PUBLIC
   CefViewCore
 )
 
