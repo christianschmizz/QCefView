@@ -2,4 +2,4 @@
 	path = CefViewCore
 	url = https://github.com/CefView/CefViewCore
 [submodule ".\\CefViewCore\\"]
-	url = git@github.com:christianschmizz/CefViewCore.git
+	url = https://github.com/christianschmizz/CefViewCore.git
