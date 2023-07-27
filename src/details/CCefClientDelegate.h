@@ -148,6 +148,8 @@ public:
                                  CefRefPtr<CefDownloadItem> download_item,
                                  CefRefPtr<CefDownloadItemCallback> callback) override;
 
+  virtual bool onAuthRequested(CefRefPtr<CefBrowser> browser, CefRefPtr<CefAuthCallback> callback) override;
+
   // RenderHandler
   virtual bool getRootScreenRect(CefRefPtr<CefBrowser> browser, CefRect& rect) override;
   virtual void getViewRect(CefRefPtr<CefBrowser> browser, CefRect& rect) override;

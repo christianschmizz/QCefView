@@ -343,6 +343,15 @@ QCefViewPrivate::onUpdateDownloadItem(QSharedPointer<QCefDownloadItem> item)
   q->onUpdateDownloadItem(item);
 }
 
+void
+QCefViewPrivate::onAuthRequested(CefRefPtr<CefBrowser> browser,
+                                 CefRefPtr<CefAuthCallback> callback)
+{
+  Q_Q(QCefView);
+
+  q->authRequested(browser->GetIdentifier());
+}
+
 bool
 QCefViewPrivate::handleLoadError(CefRefPtr<CefBrowser>& browser,
                                  CefRefPtr<CefFrame>& frame,

@@ -402,6 +402,8 @@ signals:
   /// </remarks>
   void popupCreated(QCefView* popup);
 
+  void authRequested(int i);
+
 protected:
   /// <summary>
   /// Gets called before the popup browser created

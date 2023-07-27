@@ -161,3 +161,9 @@ CCefClientDelegate::onDownloadUpdated(CefRefPtr<CefBrowser> browser,
     QCefDownloadItemPrivate::setDownloadItemCallback(item.data(), callback);
   }
 }
+
+bool
+CCefClientDelegate::onAuthRequested(CefRefPtr<CefBrowser> browser, CefRefPtr<CefAuthCallback> callback){
+  pCefViewPrivate_->onAuthRequested(browser, callback);
+  return true;
+}

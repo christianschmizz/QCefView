@@ -207,6 +207,9 @@ protected:
 
   void onUpdateDownloadItem(QSharedPointer<QCefDownloadItem> item);
 
+  void onAuthRequested(CefRefPtr<CefBrowser> browser,
+                       CefRefPtr<CefAuthCallback> callback);
+
   bool handleLoadError(CefRefPtr<CefBrowser>& browser,
                        CefRefPtr<CefFrame>& frame,
                        int errorCode,

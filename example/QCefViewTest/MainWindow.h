@@ -43,6 +43,8 @@ protected slots:
                    const QString& errorMsg,
                    const QString& failedUrl);
 
+  void onAuthRequested();
+
   // ui slots
 protected slots:
   void onBtnShowDevToolsClicked();
