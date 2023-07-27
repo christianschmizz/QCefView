@@ -102,7 +102,7 @@ MainWindow::createRightCefView()
 
   // this site is for test web events
   m_pRightCefViewWidget = new CefViewWidget("", &setting, this);
-  m_pRightCefViewWidget->navigateToUrl("https://fastest.fish/test-files");
+  m_pRightCefViewWidget->navigateToUrl("https://heise.de");
 
   //
   // m_pRightCefViewWidget = new CefViewWidget("https://mdn.dev/", &setting, this);
