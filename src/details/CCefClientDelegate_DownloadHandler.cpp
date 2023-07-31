@@ -4,6 +4,7 @@
 #include <QSharedPointer>
 #include <QThread>
 
+#include "QCefAuthenticationRequestPrivate.h"
 #include "QCefDownloadItemPrivate.h"
 #include "QCefViewPrivate.h"
 #include "utils/CommonUtils.h"
