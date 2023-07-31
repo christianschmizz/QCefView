@@ -11,6 +11,7 @@
 #pragma once
 #include <QCefView_global.h>
 
+#include <QCefAuthenticationRequest.h>
 #include <QCefDownloadItem.h>
 #include <QCefEvent.h>
 #include <QCefQuery.h>
@@ -402,7 +403,7 @@ signals:
   /// </remarks>
   void popupCreated(QCefView* popup);
 
-  void authRequested(int i);
+  void authRequested(QSharedPointer<QCefAuthenticationRequest> request);
 
 protected:
   /// <summary>

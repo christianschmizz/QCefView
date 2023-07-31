@@ -163,7 +163,27 @@ CCefClientDelegate::onDownloadUpdated(CefRefPtr<CefBrowser> browser,
 }
 
 bool
-CCefClientDelegate::onAuthRequested(CefRefPtr<CefBrowser> browser, CefRefPtr<CefAuthCallback> callback){
-  pCefViewPrivate_->onAuthRequested(browser, callback);
+CCefClientDelegate::onAuthRequested(CefRefPtr<CefBrowser> browser,
+                                    const CefString& origin_url,
+                                    bool isProxy,
+                                    const CefString& host,
+                                    int port,
+                                    const CefString& realm,
+                                    const CefString& scheme,
+                                    CefRefPtr<CefAuthCallback> callback){
+
+  if (!IsValidBrowser(browser))
+    return true;
+
+  if (true) {
+    qDebug() << "auth requested by browser " << browser->GetIdentifier() << "\n"
+      << " origin: " << QString::fromStdString(origin_url) << "\n";
+
+    //currentAuthRequest_ = QCefAuthenticationRequestPrivate::create(/*browser, origin_url, isProxy, host, port, realm, scheme, callback*/);
+
+    // notify
+    //pCefViewPrivate_->onAuthRequested(request);
+  }
+
   return true;
 }

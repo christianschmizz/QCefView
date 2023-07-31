@@ -23,6 +23,7 @@
 #include <CefViewCoreProtocol.h>
 
 #include "CCefClientDelegate.h"
+#include "QCefAuthenticationRequest.h"
 #include "QCefContext.h"
 #include "QCefSettingPrivate.h"
 #include "utils/CommonUtils.h"
@@ -344,12 +345,11 @@ QCefViewPrivate::onUpdateDownloadItem(QSharedPointer<QCefDownloadItem> item)
 }
 
 void
-QCefViewPrivate::onAuthRequested(CefRefPtr<CefBrowser> browser,
-                                 CefRefPtr<CefAuthCallback> callback)
+QCefViewPrivate::onAuthRequested(QSharedPointer<QCefAuthenticationRequest> request)
 {
   Q_Q(QCefView);
 
-  q->authRequested(browser->GetIdentifier());
+  q->authRequested(request);
 }
 
 bool

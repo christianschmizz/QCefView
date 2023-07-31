@@ -11,10 +11,12 @@
 
 #pragma region qt_headers
 #include <QMap>
+#include <QSharedPointer>
 #pragma endregion qt_headers
 
 #include <CefViewBrowserClientDelegate.h>
 
+#include <QCefAuthenticationRequest.h>
 #include <QCefDownloadItem.h>
 #include <QCefQuery.h>
 
@@ -148,7 +150,14 @@ public:
                                  CefRefPtr<CefDownloadItem> download_item,
                                  CefRefPtr<CefDownloadItemCallback> callback) override;
 
-  virtual bool onAuthRequested(CefRefPtr<CefBrowser> browser, CefRefPtr<CefAuthCallback> callback) override;
+  virtual bool onAuthRequested(CefRefPtr<CefBrowser> browser,
+                               const CefString& origin_url,
+                               bool isProxy,
+                               const CefString& host,
+                               int port,
+                               const CefString& realm,
+                               const CefString& scheme,
+                               CefRefPtr<CefAuthCallback> callback) override;
 
   // RenderHandler
   virtual bool getRootScreenRect(CefRefPtr<CefBrowser> browser, CefRect& rect) override;
