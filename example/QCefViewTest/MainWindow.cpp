@@ -16,7 +16,8 @@
 #define TUTORIAL_URL URL_ROOT "/tutorial.html"
 
 MainWindow::MainWindow(QWidget* parent)
-  : QMainWindow(parent /*, Qt::FramelessWindowHint*/)
+  : QMainWindow(parent, Qt::FramelessWindowHint)
+//  , loginDialog(new LoginDialog(this))
 {
   m_ui.setupUi(this);
 
@@ -50,6 +51,11 @@ MainWindow::MainWindow(QWidget* parent)
 
   createLeftCefView();
   createRightCefView();
+
+//  loginDialog = new LoginDialog(this);
+//  connect(this, &LoginDialog::acceptLogin), this, &MainWindow::slotAcceptUserLogin);
+//  loginDialog->setUsername((QString&)"john");
+//  loginDialog->exec();
 }
 
 MainWindow::~MainWindow() {}
@@ -72,7 +78,6 @@ MainWindow::createLeftCefView()
   connect(m_pLeftCefViewWidget, &QCefView::loadStart, this, &MainWindow::onLoadStart);
   connect(m_pLeftCefViewWidget, &QCefView::loadEnd, this, &MainWindow::onLoadEnd);
   connect(m_pLeftCefViewWidget, &QCefView::loadError, this, &MainWindow::onLoadError);
-  connect(m_pLeftCefViewWidget, &QCefView::authRequested, this, &MainWindow::onAuthRequested);
 
   m_ui.leftCefViewContainer->layout()->addWidget(m_pLeftCefViewWidget);
 }
@@ -102,7 +107,7 @@ MainWindow::createRightCefView()
 
   // this site is for test web events
   m_pRightCefViewWidget = new CefViewWidget("", &setting, this);
-  m_pRightCefViewWidget->navigateToUrl("https://heise.de");
+  m_pRightCefViewWidget->navigateToUrl("https://jigsaw.w3.org/HTTP/Basic/");
 
   //
   // m_pRightCefViewWidget = new CefViewWidget("https://mdn.dev/", &setting, this);
@@ -125,6 +130,7 @@ MainWindow::createRightCefView()
   // m_pRightCefViewWidget->setContextMenuPolicy(Qt::PreventContextMenu);
 
   //*/
+  //connect(m_pRightCefViewWidget, &QCefView::authRequested, this, &MainWindow::onAuthRequested);
 }
 
 void
@@ -161,9 +167,12 @@ MainWindow::onInvokeMethod(int browserId, int64_t frameId, const QString& method
 }
 
 void
-MainWindow::onAuthRequested()
+MainWindow::onAuthRequested(QSharedPointer<QCefAuthenticationRequest> request)
 {
-  QMessageBox::information(this->window(), "foo", "bar");
+  QMessageBox::information(this->window(), "foo", request->originUrl().toString());
+  qDebug() << request->originUrl() << request->url() << request->realm() << request->isProxy();
+//  loginDialog->setUsername(QString("john/%1").arg(request->OriginUrl().toString()));
+//  loginDialog->exec();
 }
 
 void

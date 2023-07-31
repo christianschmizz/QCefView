@@ -7,6 +7,7 @@
 #include "ui_MainWindow.h"
 
 #include "CefViewWidget.h"
+// #include "LoginDialog.h"
 
 class MainWindow : public QMainWindow
 {
@@ -43,7 +44,7 @@ protected slots:
                    const QString& errorMsg,
                    const QString& failedUrl);
 
-  void onAuthRequested();
+  void onAuthRequested(QSharedPointer<QCefAuthenticationRequest> /* request */);
 
   // ui slots
 protected slots:
@@ -64,6 +65,8 @@ private:
 
 private:
   Ui::MainWindow m_ui;
+
+//  LoginDialog* loginDialog = nullptr;
 
   CefViewWidget* m_pLeftCefViewWidget = nullptr;
   CefViewWidget* m_pRightCefViewWidget = nullptr;
